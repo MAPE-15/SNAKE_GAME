@@ -93,7 +93,14 @@ class Snake:
         self.Xs_move['x_move' + str(self.body_parts)] = 30
         self.Ys_move['y_move' + str(self.body_parts)] = 0
 
-        
+
+        self.generate_apple()
+        self.move_snake()
+
+        self.image.bind_all('<Up>', self.change_direction)
+        self.image.bind_all('<Down>', self.change_direction)
+        self.image.bind_all('<Left>', self.change_direction)
+        self.image.bind_all('<Right>', self.change_direction)
 
 
 
@@ -102,7 +109,7 @@ class Snake:
         # also create a new bodypart which will be spawn right from the last body part (at the tail) of thh snake, which this ceates a new tail
         
         self.body_parts += 1
-        print('POINTS:', self.body_parts)
+        # print('POINTS:', self.body_parts)
 
 
         if self.body_parts % 5 == 0 and self.time > 50:
@@ -138,8 +145,6 @@ class Snake:
         self.Xs_move['x_move' + str(self.body_parts)] = self.Xs_move['x_move' + str(self.body_parts - 1)]
         self.Ys_move['y_move' + str(self.body_parts)] = self.Ys_move['y_move' + str(self.body_parts - 1)]
         
-        
-        
 
     def generate_apple(self):
 
@@ -147,8 +152,6 @@ class Snake:
         self.x_apple, self.y_apple = random.randrange(0, int(self.image['width']) - 30, 30), random.randrange(0, int(self.image['height']) - 30, 30)
         self.image.create_oval(self.x_apple + 5, self.y_apple + 5, self.x_apple + 25, self.y_apple + 25, outline = '#9E0707', fill = '#9E0707', tag = 'apple')
         # -------------------------------------------------- SPAWN APPLE -------------------------------------------------------
-
-
 
 
     def move_snake(self):
@@ -411,14 +414,6 @@ class Snake:
 
 
 
-s1 = Snake(velocity= 150)
-
-s1.generate_apple()
-s1.move_snake()
-
-s1.image.bind_all('<Up>', s1.change_direction)
-s1.image.bind_all('<Down>', s1.change_direction)
-s1.image.bind_all('<Left>', s1.change_direction)
-s1.image.bind_all('<Right>', s1.change_direction)
+s1 = Snake(velocity=150)
 
 
