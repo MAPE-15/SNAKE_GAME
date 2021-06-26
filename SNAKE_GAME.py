@@ -4,11 +4,11 @@ import tkinter, random
 class Snake:
 
     # velocity default --> 400 milisecond --> how fast is the snake
-    def __init__(self, velocity = 400):
+    def __init__(self, velocity=400):
 
 
         # ------------------------------------------------------- BACKGROUND --------------------------------------------------
-        self.image = tkinter.Canvas(bg = 'green', width = 600, height = 600)
+        self.image = tkinter.Canvas(bg='green', width=600, height=600)
         self.image.pack()        
 
         x, y = 0, 0
@@ -84,7 +84,7 @@ class Snake:
         # spawn the head at these random coords
         self.image.create_rectangle(self.Xs_snake['x' + str(self.body_parts)], self.Ys_snake['y' + str(self.body_parts)],
                                     self.Xs_snake['x' + str(self.body_parts)] + self.snake_size, self.Ys_snake['y' + str(self.body_parts)] + self.snake_size,
-                                    fill = 'red', outline = 'black', tag = 'part' + str(self.body_parts))
+                                    fill='red', outline='black', tag='part' + str(self.body_parts))
         
         # add to parts dict head's coords
         self.parts['part' + str(self.body_parts)] = self.image.coords('part' + str(self.body_parts))
@@ -127,7 +127,7 @@ class Snake:
         elif self.Xs_move['x_move' + str(self.body_parts - 1)] == -30 and self.Ys_move['y_move' + str(self.body_parts - 1)] == 0:
             self.Xs_snake['x' + str(self.body_parts)] += self.snake_size
 
-        elif self.Ys_move['y_move' + str(self.body_parts - 1)]== 30 and self.Xs_move['x_move' + str(self.body_parts - 1)] == 0:
+        elif self.Ys_move['y_move' + str(self.body_parts - 1)] == 30 and self.Xs_move['x_move' + str(self.body_parts - 1)] == 0:
             self.Ys_snake['y' + str(self.body_parts)] -= self.snake_size
 
         elif self.Ys_move['y_move' + str(self.body_parts - 1)] == -30 and self.Xs_move['x_move' + str(self.body_parts - 1)] == 0:
@@ -145,13 +145,15 @@ class Snake:
         self.Xs_move['x_move' + str(self.body_parts)] = self.Xs_move['x_move' + str(self.body_parts - 1)]
         self.Ys_move['y_move' + str(self.body_parts)] = self.Ys_move['y_move' + str(self.body_parts - 1)]
         
+        
 
     def generate_apple(self):
 
         # -------------------------------------------------- SPAWN APPLE -------------------------------------------------------
         self.x_apple, self.y_apple = random.randrange(0, int(self.image['width']) - 30, 30), random.randrange(0, int(self.image['height']) - 30, 30)
-        self.image.create_oval(self.x_apple + 5, self.y_apple + 5, self.x_apple + 25, self.y_apple + 25, outline = '#9E0707', fill = '#9E0707', tag = 'apple')
+        self.image.create_oval(self.x_apple + 5, self.y_apple + 5, self.x_apple + 25, self.y_apple + 25, outline='#9E0707', fill='#9E0707', tag='apple')
         # -------------------------------------------------- SPAWN APPLE -------------------------------------------------------
+
 
 
     def move_snake(self):
@@ -205,7 +207,7 @@ class Snake:
                     
                 self.image.create_rectangle(self.Xs_snake[x_snake], self.Ys_snake[y_snake],
                                             self.Xs_snake[x_snake] + self.snake_size, self.Ys_snake[y_snake] + self.snake_size,
-                                            fill = color, outline = 'black', tag = 'part' + x_snake[1:])
+                                            fill=color, outline='black', tag='part' + x_snake[1:])
 
 
 
@@ -225,7 +227,7 @@ class Snake:
                 
                 self.image.create_rectangle(self.Xs_snake[x_snake], self.Ys_snake[y_snake],
                                             self.Xs_snake[x_snake] + self.snake_size, self.Ys_snake[y_snake] + self.snake_size,
-                                            fill = color, outline = 'black', tag = 'part' + x_snake[1:])
+                                            fill=color, outline='black', tag='part' + x_snake[1:])
 
 
 
@@ -244,7 +246,7 @@ class Snake:
                 
                 self.image.create_rectangle(self.Xs_snake[x_snake], self.Ys_snake[y_snake],
                                             self.Xs_snake[x_snake] + self.snake_size, self.Ys_snake[y_snake] + self.snake_size,
-                                            fill = color, outline = 'black', tag = 'part' + y_snake[1:])
+                                            fill=color, outline='black', tag='part' + y_snake[1:])
 
 
 
@@ -263,7 +265,7 @@ class Snake:
                 
                 self.image.create_rectangle(self.Xs_snake[x_snake], self.Ys_snake[y_snake],
                                             self.Xs_snake[x_snake] + self.snake_size, self.Ys_snake[y_snake] + self.snake_size,
-                                            fill = color, outline = 'black', tag = 'part' + y_snake[1:])
+                                            fill=color, outline='black', tag='part' + y_snake[1:])
         # ------------------------------------------ GOES BEYOND PLAY BOARD -------------------------------------
 
 
@@ -278,8 +280,8 @@ class Snake:
             if self.Xs_snake['x0'] == self.Xs_snake[x_snake] and self.Ys_snake['y0'] == self.Ys_snake[y_snake]:
 
                 self.image.create_rectangle(0, 0, int(self.image['width']), int(self.image['height']), fill = 'black')
-                self.image.create_text(int(self.image['width']) - (int(self.image['width']) / 2), int(self.image['height']) / 2.5, text = 'GAME OVER', font = 'Purisa 40', fill = 'white')
-                self.image.create_text(int(self.image['width']) - (int(self.image['width']) / 2), int(self.image['height']) / 2, text = 'POINTS: ' + str(self.body_parts), font = 'Purisa 30', fill = 'white')
+                self.image.create_text(int(self.image['width']) - (int(self.image['width']) / 2), int(self.image['height']) / 2.5, text='GAME OVER', font='Purisa 40', fill='white')
+                self.image.create_text(int(self.image['width']) - (int(self.image['width']) / 2), int(self.image['height']) / 2, text='POINTS: ' + str(self.body_parts), font='Purisa 30', fill='white')
                 self.lost = True
         # ------------------------------------------------- HEAD TOUCHED BODY GAME OVER----------------------------------------------
 
@@ -412,8 +414,4 @@ class Snake:
                 self.Xs_move['x_move0'] = 0
                 self.Ys_move['y_move0'] = 30
 
-
-
 s1 = Snake(velocity=150)
-
-
