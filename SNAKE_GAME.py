@@ -1,4 +1,5 @@
-import tkinter, random
+import tkinter
+import random
 
 
 class Snake:
